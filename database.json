@@ -1,0 +1,103 @@
+{
+  "challenges": [
+    {
+      "active": false,
+      "name": "fair-and-square",
+      "time": "2021-04-07T20:22:07.732676700Z",
+      "channel": 828946660796792865,
+      "submissions": [
+        {
+          "user": 331303622644334603,
+          "message": 828973942790029312,
+          "content": "**~~185~~ 181 bytes**\n```execute store result score b x run scoreboard players add a x 1\nscoreboard players operation b x *= b x\nexecute if score b x = i x run me 1\nexecute if score a x < i x run function p``` must be placed in the function `p.mcfunction`.\ntakes input in scoreboard `i x`, and assumes there are no other scores on the objective `x` (in particular `a x` isn't set).\nprints `1` if the number is a perfect square, and nothing otherwise"
+        }
+      ]
+    },
+    {
+      "active": false,
+      "name": "prime-time",
+      "time": "2021-04-07T20:22:10.689107500Z",
+      "channel": 828946498334490654,
+      "submissions": [
+        {
+          "user": 331303622644334603,
+          "message": 828979636054392863,
+          "content": "**~~218~~ 214 bytes**\n```scoreboard players operation b x = i x\nscoreboard players operation b x %= a x\nexecute if score b x matches 0 if score a x matches 2.. run me 1\nscoreboard players add a x 1\nexecute if score a x < i x run function p```\nmust be placed in function `p.mcfunction`\noutputs nothing iff `i x` is prime.\ntakes input in scoreboard `i x`, and assumes there are no other scores on the objective x (in particular `a x` isn't set)."
+        },
+        {
+          "user": 331303622644334603,
+          "message": 828948035181740032,
+          "content": "My attempt, 410 characters:\n\n`start.mcfunction`\n```# assumed scoreboard\nscoreboard objectives add p dummy\n\n# code\nscoreboard players set c p 1\nexecute store result score o p if score i p matches 2..3\nexecute unless score i p = c p if score o p < c p run function p\n\n# assumed cleanup\nscoreboard players set c p 0\nscoreboard players set o p 0```\n`p.mcfunction`\n```# c = count, i = input, m = math, o = output\nscoreboard players add c p 1\nscoreboard players operation m p = i p\nscoreboard players operation m p %= c p\nexecute unless score i p = c p store result score o p if score m p matches 1..\nexecute if score c p matches ..999 if score o p matches 1 run function p```"
+        }
+      ]
+    },
+    {
+      "active": false,
+      "name": "factoring-fun",
+      "time": "2021-04-08T20:33:42.291054900Z",
+      "channel": 829091482958561291,
+      "submissions": [
+        {
+          "user": 331303622644334603,
+          "message": 829097698581413949,
+          "content": "**310 bytes**\n```\n# k.mcfunction\nscoreboard players add a x 1\nscoreboard players operation b x = i x\nscoreboard players operation b x %= a x\nexecute if score b x matches 0 if score a x matches 2.. run function r\nfunction k\n\n# r.mcfunction\nscoreboard players operation i x /= a x\ntellraw @a {\"score\":{\"name\":\"a\",\"objective\":\"x\"}}\nscoreboard players remove a x 1```\ncall `k`, takes input in `i x`.\nterminates with max command chain length. If that's not allowed, it's +36 for adding `execute if score i x matches 2.. run ` in from of `function k`"
+        },
+        {
+          "user": 276809351585595403,
+          "message": 829372833091682364,
+          "content": "<@828362199428890674> pinned a message to this channel. See all the pins."
+        }
+      ]
+    },
+    {
+      "active": false,
+      "name": "pi-digit",
+      "time": "2021-04-11T12:31:02.755481900Z",
+      "channel": 829017760733593670,
+      "submissions": []
+    },
+    {
+      "active": true,
+      "name": "bot-commands",
+      "time": "2352-05-12T16:26:40.299055400Z",
+      "channel": 828371310932525086,
+      "submissions": [
+        {
+          "user": 331303622644334603,
+          "message": 829391632788619346,
+          "content": "Say something important"
+        },
+        {
+          "user": 276809351585595403,
+          "message": 829392155251310592,
+          "content": "so it works when *I* react like that to your message"
+        },
+        {
+          "user": 276809351585595403,
+          "message": 829392119461838888,
+          "content": "<@828362199428890674> pinned a message to this channel. See all the pins."
+        },
+        {
+          "user": 276809351585595403,
+          "message": 829392176202514442,
+          "content": "Registered submission!"
+        },
+        {
+          "user": 385816527456436225,
+          "message": 829392262965231636,
+          "content": "<@828362199428890674> pinned a message to this channel. See all the pins."
+        },
+        {
+          "user": 276809351585595403,
+          "message": 829392261904072774,
+          "content": "Registered submission!"
+        },
+        {
+          "user": 385816527456436225,
+          "message": 829394075014004767,
+          "content": "<@828362199428890674> pinned a message to this channel. See all the pins."
+        }
+      ]
+    }
+  ]
+}
